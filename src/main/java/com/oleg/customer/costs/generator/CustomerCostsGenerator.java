@@ -1,6 +1,6 @@
 package com.oleg.customer.costs.generator;
 
-import com.oleg.customer.costs.entity.CustomerCosts;
+import com.oleg.customer.costs.analytics.customer_costs.command.CreateCustomerCostsCommand;
 import com.oleg.customer.costs.mappings.CategoryMappings;
 import com.oleg.customer.costs.mappings.DescriptionMappings;
 import org.slf4j.Logger;
@@ -34,8 +34,8 @@ public class CustomerCostsGenerator {
         this.descriptionMappings = descriptionMappings;
     }
 
-    public List<CustomerCosts> generateCustomerCosts(int userId) {
-        List<CustomerCosts> result = new ArrayList<>();
+    public List<CreateCustomerCostsCommand> generateCustomerCosts(int userId) {
+        List<CreateCustomerCostsCommand> result = new ArrayList<>();
 
         LocalDate currentDate = START_DATE;
         while (!currentDate.isAfter(END_DATE)) {
@@ -55,7 +55,7 @@ public class CustomerCostsGenerator {
                 BigDecimal amount = randomAmountForCategory();
                 String description = generateDescription(categoryName);
 
-                result.add(new CustomerCosts(
+                result.add(new CreateCustomerCostsCommand(
                     userId,
                     categoryId,
                     amount,

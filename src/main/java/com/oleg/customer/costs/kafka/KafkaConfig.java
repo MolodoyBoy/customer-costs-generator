@@ -1,6 +1,6 @@
 package com.oleg.customer.costs.kafka;
 
-import com.oleg.customer.costs.entity.CustomerCosts;
+import com.oleg.customer.costs.analytics.customer_costs.command.CreateCustomerCostsCommand;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,14 +23,14 @@ import static org.apache.kafka.clients.producer.ProducerConfig.VALUE_SERIALIZER_
 public class KafkaConfig {
 
     @Bean
-    public KafkaTemplate<Integer, CustomerCosts> customerCostsKafkaTemplate(
-        ProducerFactory<Integer, CustomerCosts> customerCostsProducerFactory
+    public KafkaTemplate<Integer, CreateCustomerCostsCommand> customerCostsKafkaTemplate(
+        ProducerFactory<Integer, CreateCustomerCostsCommand> customerCostsProducerFactory
     ) {
         return new KafkaTemplate<>(customerCostsProducerFactory);
     }
 
     @Bean
-    public DefaultKafkaProducerFactory<Integer, CustomerCosts> customerCostsProducerFactory(
+    public DefaultKafkaProducerFactory<Integer, CreateCustomerCostsCommand> customerCostsProducerFactory(
         KafkaProperties kafkaProperties,
         @Value("${spring.application.name}") String applicationName
     ) {
