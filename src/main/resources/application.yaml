@@ -1,0 +1,12 @@
+spring:
+    application:
+        name: 'customer-costs-generator'
+    kafka:
+        producer:
+            acks: 1
+            batch-size: 20
+        bootstrap-servers: customer-costs-kafka:9092
+oleg:
+    kafka:
+        customer-costs:
+            topic: public.customer-costs.v1
