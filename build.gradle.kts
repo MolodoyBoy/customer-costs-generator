@@ -54,6 +54,6 @@ jib {
 
     container {
         jvmFlags = listOf("-XX:MaxRAMPercentage=80")
-        mainClass = "com.oleg.customer.costs.analytics.CustomerCostAnalyticServiceApplication"
+        mainClass = "com.oleg.customer.costs.CustomerCostsGenerationApplication"
     }
 }
