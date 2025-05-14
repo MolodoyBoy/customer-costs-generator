@@ -1,9 +1,9 @@
-package com.oleg.customer.costs.analytics.customer_costs.command;
+package com.oleg.customer.costs.data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public record CreateCustomerCostsCommand(
+public record CustomerCosts(
     int userId,
     int categoryId,
     BigDecimal amount,
