@@ -1,6 +1,6 @@
 package com.oleg.customer.costs.job;
 
-import com.oleg.customer.costs.data.CustomerCosts;
+import com.oleg.customer.costs.data.CustomerCostsData;
 import com.oleg.customer.costs.generator.CustomerCostsGenerator;
 import com.oleg.customer.costs.kafka.CustomerCostsPublisher;
 import jakarta.annotation.PostConstruct;
@@ -34,8 +34,8 @@ public class CustomerCostsJob {
         rangeClosed(1, USER_COUNT)
             .boxed()
             .forEach(userId -> {
-                List<CustomerCosts> customerCosts = customerCostsGenerator.generateCustomerCosts(userId);
-                customerCostsPublisher.publish(customerCosts);
+                List<CustomerCostsData> customerCostData = customerCostsGenerator.generateCustomerCosts(userId);
+                customerCostsPublisher.publish(customerCostData);
             });
 
         logger.info("Job finished.");
